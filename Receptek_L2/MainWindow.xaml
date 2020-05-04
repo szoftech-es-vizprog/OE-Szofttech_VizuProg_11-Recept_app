@@ -1,0 +1,52 @@
+﻿<Window x:Class="Receptek_L2.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Receptek_L2"
+        mc:Ignorable="d"
+        Title="Receptek" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="15*" />
+            <RowDefinition Height="15*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Label x:Name="ReceptekFelirat" Grid.Row="0" Grid.Column="0" >Receptek</Label>
+        <Label x:Name="HozzavalokFelirat" Grid.Row="0" Grid.Column="1">Hozzávalók</Label>
+        <ListBox x:Name="ReceptekLista" Grid.Row="1" Grid.Column="0" SelectionChanged="ReceptekLista_SelectionChanged"></ListBox>
+        <ListBox x:Name="HozzavalokLista" ItemsSource="{Binding}" Grid.Row="1" Grid.Column="1" >
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Column="0" Content="{Binding Path=Nev}" />
+                        <Label Grid.Column="1" Content="{Binding Path=Mennyiseg}" />
+                        <Label Grid.Column="2" Content="{Binding Path=Mertekegyseg}" />
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <Grid Grid.Row="2" Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Label Content="Elkészítési idő (perc): " Grid.Column="0" Grid.Row="0" />
+            <Label x:Name="Ido" Grid.Column="1" Grid.Row="0" />
+            <Label x:Name="Elkeszites" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" />
+        </Grid>
+    </Grid>
+</Window>
